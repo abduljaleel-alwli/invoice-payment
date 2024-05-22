@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html lang="ar" b:css='false' b:defaultwidgetversion='2' b:js='true' b:layoutsVersion='3' b:responsive='true' b:templateUrl='vegeclub.xml' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.locale.language' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head><b:attr expr:value='data:view.isSingleItem ? &quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#&quot; : &quot;og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# website: http://ogp.me/ns/website#&quot;' name='prefix'/>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>فاتورة المدفوعات</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <!-- Hide cookie message -->
+  <script>cookieChoices = {};</script>  
+  <b:skin><![CDATA[
+  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+  
+/* -------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+  
+/* -------------------------- */
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --blue-color: #0c2f54;
+    --dark-color: #535b61;
+    --white-color: #fff;
+}
+
+ul{
+    list-style-type: none;
+}
+ul li{
+    margin: 2px 0;
+}
+
+/* text colors */
+.text-dark{
+    color: var(--dark-color);
+}
+.text-blue{
+    color: var(--blue-color);
+}
+.text-end{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.text-start{
+    text-align: left;
+}
+.text-bold{
+    font-weight: 700;
+}
+/* hr line */
+.hr{
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+/* border-bottom */
+.border-bottom{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body{
+    font-family: 'Tajawal', sans-serif;
+    color: var(--dark-color);
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+.invoice-wrapper{
+    min-height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.invoice{
+    max-width: 850px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--white-color);
+    padding: 70px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    min-height: 920px;
+}
+.invoice-head-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.invoice-head-top-left img{
+    /* width: 130px; */
+    filter: drop-shadow(1px 0px 28px #ffa4d2);
+    width: 49px;
+    margin: 10px 0;
+    margin-left: 10px;
+}
+.invoice-head-top-right h3{
+    font-weight: 500;
+    font-size: 27px;
+    color: var(--blue-color);
+}
+.invoice-head-middle, .invoice-head-bottom{
+    padding: 16px 0;
+}
+.invoice-body{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.invoice-body table{
+    border-collapse: collapse;
+    border-radius: 4px;
+    width: 100%;
+}
+.invoice-body table td, .invoice-body table th{
+    padding: 12px;
+}
+.invoice-body table tr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.invoice-body table thead{
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.invoice-body-info-item{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+.invoice-body-info-item .info-item-td{
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.invoice-foot{
+    padding: 30px 0;
+}
+.invoice-foot p{
+    font-size: 12px;
+}
+.invoice-btns{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.print-btn{
+    position: fixed;
+    bottom: 20px;
+    left: 20px !important;
+    height: 55px;
+    width: 55px;
+    border-radius: 43px;
+    font-size: 26px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: #ff9dfc;
+    color: white !important;
+    border: none !important;
+}
+.print-btn:hover{
+    background: #f577f1;
+}
+
+.invoice-btn span{
+    margin: auto;
+    margin-top: 7px;
+}
+
+
+.invoice-btn{
+    display: flex;
+    padding: 3px 9px;
+    color: var(--dark-color);
+    font-family: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.invoice-head-top, .invoice-head-middle, .invoice-head-bottom{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 10px;
+}
+
+.invoice-head-bottom-left ul{
+    padding-left: 0 ;
+}
+
+div#create-order-page{
+    min-height: 428px;
+}
+#add-btn,
+.add-btn-box{
+    width: 100%;
+}
+
+.client-location,
+.site-email{
+    width: 48%;
+}
+
+@media screen and (max-width: 992px){
+    .invoice{
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .invoice-head-top, .invoice-head-middle, .invoice-head-bottom{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .invoice-head-bottom-right{
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+    .invoice *{
+        text-align: right;
+    }
+    .invoice{
+        padding: 28px;
+    }
+}
+
+.overflow-view{
+    overflow-x: scroll;
+}
+.invoice-body{
+    min-width: 600px;
+}
+
+@media print{
+    .print-area{
+        visibility: visible;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+
+    .overflow-view{
+        overflow-x: hidden;
+    }
+
+    .invoice-btns,
+    .remove-btn,
+    #action-th,
+    #create-order-page{
+        display: none;
+    }
+}
+
+/* for custom scrollbar for webkit browser*/  
+::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+    ]]></b:skin>
+</head>
+<body dir="rtl">
+
+    <b:section id="content-section" class="content-section" showaddelement="yes"></b:section>
+
+    <div id="create-order-page" class="invoice container mt-4">
+        <fieldset>
+          <legend class="text-center">إنشاء طلب</legend>
+
+          <form id="create-order-form">
+            <div class="mb-3">
+                <label for="service" class="form-label">خدمة</label>
+                <input type="text" id="service" class="form-control" required="required" />
+            </div>
+
+            <div class="mb-3">
+                <label for="client-name" class="form-label">أسم العميل</label>
+                <input type="text" id="client-name" class="form-control" required="required" />
+            </div>
+              
+            <div class="d-flex align-items-center justify-content-between">
+
+                <div class="mb-3 client-location">
+                    <label for="client-location" class="form-label">موقع العميل</label>
+                    <input type="text" id="client-location" class="form-control" />
+                </div>
+
+                <div class="mb-3 site-email">
+                    <label for="site-email" class="form-label">ايميلك</label>
+                    <input type="text" id="site-email" class="form-control" required="required" />
+                </div>
+            </div>
+                    
+            <div class="d-flex align-items-center justify-content-between">
+                    <div class="mb-3 pl-2">
+                        <label for="rate" class="form-label">سعر</label>
+                        <input type="number" id="rate" class="form-control" required="required" />
+                    </div>
+                            
+                    <div class="mb-3 px-2">
+                        <label for="qtv" class="form-label">كمية</label>
+                        <input type="number" id="qtv" class="form-control" />
+                    </div>
+
+                    <div class="mb-3 px-2">
+                        <label for="invoice-number" class="form-label">رقم الفاتورة</label>
+                        <input type="number" id="invoice-number-input" class="form-control" />
+                    </div>
+    
+                    <div class="mb-3 px-2">
+                        <label for="currency" class="form-label">العملة</label>
+                        <select id="currency" class="form-select text-center">
+                            <option>﷼</option>
+                            <option>$</option>
+                        </select>
+                    </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+                
+    
+                <div class="add-btn-box">
+                    <button type="submit" class="btn btn-primary h-30 mt-3 float-right " id="add-btn">إنشاء</button>
+                </div>
+            </div>
+
+          </form>
+          
+        </fieldset>
+    </div>
+
+
+    <div class = "invoice-wrapper" id = "print-area">
+        <div class = "invoice">
+            <div class = "invoice-container">
+                <div class = "invoice-head">
+                    <div class = "invoice-head-top">
+                        <div class = "invoice-head-top-left text-end">
+                            <img src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLW7yrla6hiPlwP_iXeeJmm-m7TgR34GZTWmFMQO7-oAtHouHB0Va_VW5rwDKR0ne-pO6nah3a_wsu1IDyESFUj3-Lpgx0jY_Ycgt-TnyBrhD_jYxd_VbWsMybN9b4DDQ_MnCSVi-0B8BgLG1XISK0I5sCAmrFB5dJKqWsBrxLsK-8NTabyOqASp-WeEcG/s315/%E2%80%8F%E2%80%8FLOGO-WHITE.png" />
+                        </div>
+                        <div class = "invoice-head-top-right text-start">
+                            <h3>فاتورة</h3>
+                        </div>
+                    </div>
+                    <div class = "hr"></div>
+                    <div class = "invoice-head-middle">
+                        <div class = "invoice-head-middle-left text-end">
+                            <p><span class = "text-bold" >تاريخ</span>: <span id="date">05/12/2020</span></p>
+                        </div>
+                        <div class = "invoice-head-middle-right text-start">
+                            <p><span class = "text-bold">رقم الفاتورة: </span><span id="invoice-number">00</span></p>
+                        </div>
+                    </div>
+                    <div class = "hr"></div>
+                    <div class = "invoice-head-bottom">
+                        <div class = "invoice-head-bottom-left">
+                            <ul>
+                                <li class = 'text-bold'>فوترة إلى:</li>
+                                <li id="client-name-display">محمد أحمد</li>
+                                <li id="client-location-display">السعودية, الرياض</li>
+                                <!-- <li>HP12 3JL</li> -->
+                                <li>المملكة العربية السعودية</li>
+                            </ul>
+                        </div>
+                        <div class = "invoice-head-bottom-right">
+                            <ul class = "text-end">
+                                <li class = 'text-bold'>دفع لـ:</li>
+                                <li>موقع صالوني</li>
+                                <li>السعودية، جدة</li>
+                                <li>المملكة العربية السعودية</li>
+                                <li id="site-email-display">abduljaleel.dev@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class = "overflow-view">
+                    <div class = "invoice-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="text-bold" data-name="service">خدمة</td>
+                                    <td class="text-bold" data-name="">السعر</td>
+                                    <td class="text-bold" data-name="">العدد</td>
+                                    <td class="text-bold text-end" data-name="">الاجمالي</td>
+                                    <td class="text-bold " id="action-th" data-name="">امر</td>
+                                </tr>
+                            </thead>
+                            <tbody  id="order-list" >
+                                
+                            </tbody>
+                        </table>
+                        <div class = "invoice-body-bottom">
+                            <div class = "invoice-body-info-item">
+                                <div class = "info-item-td text-end text-bold">مجموع:</div>
+                                <div class = "info-item-td text-end text-bold" id="total">﷼ 0 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "invoice-foot text-center">
+                    <p><span class = "text-bold text-center">ملاحظه:&amp;</span>هذا إيصال تم إنشاؤه بواسطة الكمبيوتر ولا يتطلب توقيعا ماديا.</p>
+
+                    <div class = "invoice-btns">
+                        <button type = "button" class = "invoice-btn print-btn btn text-white" onclick="printInvoice()">
+                            <span>
+                                <i class="fa-solid fa-print"></i>
+                            </span>
+                            <!-- <span>طباعة</span> -->
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script type='text/javascript'>
+        //<![CDATA[
+        // Create Order Form
+const create_order_form = document.getElementById("create-order-form");
+
+// Form Elements
+const service = document.getElementById("service");
+const client_name = document.getElementById("client-name");
+const client_location = document.getElementById("client-location");
+const site_email = document.getElementById('site-email')
+const rate = document.getElementById("rate");
+const qtv = document.getElementById("qtv");
+const invoice_number_input = document.getElementById("invoice-number-input");
+const currency = document.getElementById("currency");
+
+// UI elements
+const client_name_display = document.getElementById('client-name-display')
+const client_location_display = document.getElementById('client-location-display')
+const site_email_display = document.getElementById('site-email-display')
+const invoice_number = document.getElementById("invoice-number");
+
+// Order List Item
+const orderList = document.getElementById("order-list");
+
+let total = [];
+
+document.addEventListener("DOMContentLoaded", function (e) {
+
+
+    // --> Get Data From Local Storage
+    const invoice_data = localStorage.getItem('invoice_data');
+    const formData = JSON.parse(invoice_data)
+
+    if (formData) {
+        site_email.value = formData.email
+        site_email_display.textContent = formData.email
+        invoice_number_input.value = formData.invoice_number
+        invoice_number.textContent = formData.invoice_number
+    }
+
+    create_order_form.addEventListener("submit", function (e) {
+
+        e.preventDefault();
+
+        const order = document.querySelectorAll(".order");
+
+        invoice_number.innerHTML = invoice_number_input.value;
+        client_name_display.innerHTML = client_name.value;
+
+        client_location_display.innerHTML = client_location.value;
+        site_email_display.innerHTML = site_email.value
+
+        const data = {
+            email: site_email.value,
+            invoice_number: invoice_number_input.value,
+        };
+
+        // Save Data on Local Storage
+        const dataJSON = JSON.stringify(data);
+        localStorage.setItem('invoice_data', dataJSON);
+
+
+        // Add id for order
+        if (order[0]) {
+            const lastOrder = order[order.length - 1];
+            var newid = Number(lastOrder.id) + 1;
+
+        }else{
+            var newid = 1;
+            qtv.value == '' ? total.push(Number(rate.value)) : total.push(Number(rate.value) * Number(qtv.value));
+        }
+
+        // Total orders
+
+        // Create New Order in UI
+        if (service.value && rate.value && client_name.value && site_email) {
+            let newOrder = `
+                <tr id="${newid}" class="order">
+                    <td>${service.value}</td>
+                    <td>${currency.value} <span>${rate.value}</span></td>
+                    <td>${qtv.value == '' ? 0 : qtv.value}</td>
+                    <td class="text-end">${currency.value} <span class="rate">${qtv.value == '' || qtv.value == 0 ? rate.value : (rate.value * qtv.value)}</span> </td>
+                    <td><button class="remove-btn  btn btn-danger" onclick="remove(${newid}, ${rate.value * qtv.value})">حذف</button></td>
+                </tr>
+            `;
+            orderList.innerHTML += newOrder;
+        }
+        createTotal()
+    });
+});
+
+
+// --> Preint Invoice
+const createOrderPage = document.getElementById('create-order-page')
+function printInvoice(){
+    window.print();
+}
+
+// --> Remove Order
+const remove = (id, rate) => {
+    const removeOrder = document.getElementById(id);
+
+    for (let i = 0; i < total.length; i++) {
+        if (total[i] === rate) {
+            total.splice(i, 1);
+            break;
+        }
+    }
+
+    removeOrder.remove();
+    createTotal()
+
+}
+
+// --> Show Date
+function showDate() {
+    let today = new Date();
+    let dd = String(today.getDate()).padStart(2, '0');
+    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    let yyyy = today.getFullYear();
+
+    today = dd + '/' + mm + '/' + yyyy;
+    document.getElementById('date').innerHTML = today;
+}
+
+showDate()
+
+const createTotal = () => {
+    var total2 = [];
+
+ 
+    const total_display = document.getElementById("total");
+    const rateOrders = document.querySelectorAll(".rate");
+
+    let newTotal = 0;
+
+    rateOrders.forEach( rate => {
+        total2.push(Number(rate.innerHTML));
+    })
+
+    for (let i = 0; i < total2.length; i++) {
+        newTotal += total2[i];
+    }
+
+    total_display.innerText = `${ currency.value} ${ newTotal }`;
+
+    console.log(newTotal);
+    console.log(total2);
+}
+        //]]>
+    </script>
+</body>
+</html>

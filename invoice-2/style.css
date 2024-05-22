@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+  
+/* -------------------------- */
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --blue-color: #0c2f54;
+    --dark-color: #535b61;
+    --white-color: #fff;
+}
+
+ul{
+    list-style-type: none;
+}
+ul li{
+    margin: 2px 0;
+}
+
+/* text colors */
+.text-dark{
+    color: var(--dark-color);
+}
+.text-blue{
+    color: var(--blue-color);
+}
+.text-end{
+    text-align: right;
+}
+.text-center{
+    text-align: center;
+}
+.text-start{
+    text-align: left;
+}
+.text-bold{
+    font-weight: 700;
+}
+/* hr line */
+.hr{
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+/* border-bottom */
+.border-bottom{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body{
+    font-family: 'Tajawal', sans-serif;
+    color: var(--dark-color);
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+.invoice-wrapper{
+    min-height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.1); */
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.invoice{
+    max-width: 850px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: var(--white-color);
+    padding: 70px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    min-height: 920px;
+}
+.invoice-head-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.invoice-head-top-left img{
+    /* width: 130px; */
+    filter: drop-shadow(1px 0px 28px #ffa4d2);
+    width: 49px;
+    margin: 10px 0;
+    margin-left: 10px;
+}
+.invoice-head-top-right h3{
+    font-weight: 500;
+    font-size: 27px;
+    color: var(--blue-color);
+}
+.invoice-head-middle, .invoice-head-bottom{
+    padding: 16px 0;
+}
+.invoice-body{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.invoice-body table{
+    border-collapse: collapse;
+    border-radius: 4px;
+    width: 100%;
+}
+.invoice-body table td, .invoice-body table th{
+    padding: 12px;
+}
+.invoice-body table tr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.invoice-body table thead{
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.invoice-body-info-item{
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+.invoice-body-info-item .info-item-td{
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.02);
+}
+.invoice-foot{
+    padding: 30px 0;
+}
+.invoice-foot p{
+    font-size: 12px;
+}
+.invoice-btns{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.print-btn{
+    position: fixed;
+    bottom: 20px;
+    left: 20px !important;
+    height: 55px;
+    width: 55px;
+    border-radius: 43px;
+    font-size: 26px;
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: #ff9dfc;
+    color: white !important;
+    border: none !important;
+}
+.print-btn:hover{
+    background: #f577f1;
+}
+
+.invoice-btn span{
+    margin: auto;
+    margin-top: 7px;
+}
+
+
+.invoice-btn{
+    display: flex;
+    padding: 3px 9px;
+    color: var(--dark-color);
+    font-family: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.invoice-head-top, .invoice-head-middle, .invoice-head-bottom{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 10px;
+}
+
+.invoice-head-bottom-left ul{
+    padding-left: 0 ;
+}
+
+div#create-order-page{
+    min-height: 428px;
+}
+#add-btn,
+.add-btn-box{
+    width: 100%;
+}
+
+.client-location,
+.site-email{
+    width: 48%;
+}
+
+@media screen and (max-width: 992px){
+    .invoice{
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .invoice-head-top, .invoice-head-middle, .invoice-head-bottom{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .invoice-head-bottom-right{
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+    .invoice *{
+        text-align: right;
+    }
+    .invoice{
+        padding: 28px;
+    }
+}
+
+.overflow-view{
+    overflow-x: scroll;
+}
+.invoice-body{
+    min-width: 600px;
+}
+
+@media print{
+    .print-area{
+        visibility: visible;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+
+    .overflow-view{
+        overflow-x: hidden;
+    }
+
+    .invoice-btns,
+    .remove-btn,
+    #action-th,
+    #create-order-page{
+        display: none;
+    }
+}
+
+/* for custom scrollbar for webkit browser*/  
+::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
